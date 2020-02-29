@@ -3,7 +3,7 @@ let usersCol = db.collection("user");
 
 firebase.auth().onAuthStateChanged(function(currentUser) {
     document.getElementById("name").innerHTML = `Hello ${currentUser.displayName}!`;
-    usersDocRef = usersCol.doc(currentUser.uid);
+    let usersDocRef = usersCol.doc(currentUser.uid);
     usersDocRef.get().then(function(userDoc) {
         user = userDoc.data();
         cond = user.condition;
@@ -45,3 +45,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function gotoChat(i) {
 	window.location.replace(`/chats/${conds[i]}`);
 }
+
+document.getElementById("addCondition").addEventListener("click", function() {
+    window.location.replace("/addCondition");
+});
