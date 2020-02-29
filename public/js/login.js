@@ -1,4 +1,5 @@
 let googleProvider = new firebase.auth.GoogleAuthProvider();
+let db = firebase.firestore();
 
 document.getElementById("google-login").addEventListener("click", function() {
     firebase
@@ -20,15 +21,23 @@ document.getElementById("google-login").addEventListener("click", function() {
             let credential = error.credential;
             // ...
         });
-        // firebase.auth.Auth.Persistence.LOCAL
-   /* firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .catch(function(error) {
-            console.log(error.message);
-        });*/
+
 });
 
 firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
     document.getElementById("google-login").innerHTML = `Logged in as ${user.displayName}`;
-    window.location.replace("/details");
+
+    db.collection("user")
+        .doc(user.uid)
+        .onSnapshot(function(querySnapshot) {      
+            let arr = querySnapshot.data().condition;
+            if(arr.length !== 0) {
+                window.location.replace("/profile");
+            } else {
+                window.location.replace("/details");
+            }
+        });
+
+    
 });
