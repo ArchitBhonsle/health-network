@@ -12,9 +12,16 @@ document.getElementById("submit-details").addEventListener("click", function() {
             user.medications.push(document.getElementById("medications").value);
             user.timeSinceDiagnosis.push(document.getElementById("timeSinceDiagnosis").value);
             console.log({ user });
-            db.collection("user").doc(currentUser.uid).set(user).then().catch(function(error) {
-                console.log("Error adding document: ", error);
-            });
+            db
+                .collection("user")
+                .doc(currentUser.uid)
+                .set(user)
+                .then(function() {
+                    window.location.replace("/profile");
+                })
+                .catch(function(error) {
+                    console.log("Error adding document: ", error);
+                });
         });
     });
 });
