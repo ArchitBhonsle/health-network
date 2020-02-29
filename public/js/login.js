@@ -50,3 +50,17 @@ document.getElementById("facebook-login").addEventListener("click", function() {
             // ...
         });
 });
+
+document.getElementById("email-login").addEventListener("click", function() {
+    let email = document.getElementById("email-input").value;
+    let password = document.getElementById("pass-word").value;
+    // console.log(email);
+    // console.log(password);
+    firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+            console.log(error.code);
+            console.log(error.message);
+        });
+})
