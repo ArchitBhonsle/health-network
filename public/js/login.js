@@ -9,9 +9,6 @@ document.getElementById("google-login").addEventListener("click", function() {
             let token = result.credential.accessToken;
             // The signed-in user info.
             let user = result.user;
-            // ...
-            console.log({ token });
-            console.log({ user });
         })
         .catch(function(error) {
             // Handle Errors here.
@@ -30,16 +27,8 @@ document.getElementById("google-login").addEventListener("click", function() {
         });*/
 });
 
-document.getElementById("email-login").addEventListener("click", function() {
-    let email = document.getElementById("email-input").value;
-    let password = document.getElementById("pass-word").value;
-    // console.log(email);
-    // console.log(password);
-    firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .catch(function(error) {
-            console.log(error.code);
-            console.log(error.message);
-        });
-})
+firebase.auth().onAuthStateChanged(function(user) {
+    console.log(user);
+    document.getElementById("google-login").innerHTML = `Logged in as ${user.displayName}`;
+    window.location.replace("/details");
+});
