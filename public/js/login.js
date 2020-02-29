@@ -9,9 +9,6 @@ document.getElementById("google-login").addEventListener("click", function() {
             let token = result.credential.accessToken;
             // The signed-in user info.
             let user = result.user;
-            // ...
-            console.log({ token });
-            console.log({ user });
         })
         .catch(function(error) {
             // Handle Errors here.
@@ -23,4 +20,10 @@ document.getElementById("google-login").addEventListener("click", function() {
             let credential = error.credential;
             // ...
         });
+});
+
+firebase.auth().onAuthStateChanged(function(user) {
+    console.log(user);
+    document.getElementById("google-login").innerHTML = `Logged in as ${user.displayName}`;
+    window.location.replace("/details");
 });

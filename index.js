@@ -25,6 +25,10 @@ app.get("/login", (req, res) => {
     res.render("auth/login");
 });
 
+app.post("/login", (req, res) => {
+    console.log(req);
+});
+
 app.get("/details", (req, res) => {
     res.render("auth/details");
 });
