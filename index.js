@@ -17,7 +17,6 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-// firebase.initializeApp(functions.config().firebase);
 let db = firebase.firestore();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,16 +25,10 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
 app.get("/login", (req, res) => {
-    // console.log(firebase.auth().currentUser);
     res.render("auth/login");
 });
 
-app.post("/login", (req, res) => {
-    console.log(req);
-});
-
 app.get("/details", (req, res) => {
-    // console.log(firebase.auth().currentUser);
     res.render("auth/details");
 });
 
@@ -43,8 +36,8 @@ app.get("/chat", (req, res) => {
     res.render("chat");
 });
 
-app.get("/signup", (req, res) => {
-    res.render("signup");
+app.get("/profile", (req, res) => {
+    res.render("profile");
 });
 
 app.listen(9001, () => {
