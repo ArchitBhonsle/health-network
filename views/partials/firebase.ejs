@@ -1,0 +1,28 @@
+<!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Add the entire Firebase JavaScript SDK -->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey            : "AIzaSyAs8FVXBJ-M4toU6-GNQKDuAsodbkP501w",
+        authDomain        : "social-network-c462e.firebaseapp.com",
+        databaseURL       : "https://social-network-c462e.firebaseio.com",
+        projectId         : "social-network-c462e",
+        storageBucket     : "social-network-c462e.appspot.com",
+        messagingSenderId : "132403966735",
+        appId             : "1:132403966735:web:a5104971fbbb768ce7847a",
+        measurementId     : "G-FD1QD59BLT"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+</script>

@@ -22,7 +22,11 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
 app.get("/login", (req, res) => {
-    res.render("login");
+    res.render("auth/login");
+});
+
+app.get("/details", (req, res) => {
+    res.render("auth/details");
 });
 
 app.listen(9001, () => {
