@@ -16,3 +16,15 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.listen(9001, () => {
+    console.log("Server started at port 9001");
+});
