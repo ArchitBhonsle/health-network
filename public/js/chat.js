@@ -1,5 +1,7 @@
 "use strict";
 
+const room = window.location.pathname.toLowerCase().slice(7);
+
 // Signs-in Friendly Chat.
 function signIn() {
     // Sign in Firebase using popup auth and Google as the identity provider.
@@ -40,6 +42,8 @@ function saveMessage(messageText) {
     return firebase
         .firestore()
         .collection("messages")
+        .doc(room)
+        .collection("messages")
         .add({
             name          : getUserName(),
             text          : messageText,
@@ -54,7 +58,13 @@ function saveMessage(messageText) {
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
     // Create the query to load the last 12 messages and listen for new ones.
-    var query = firebase.firestore().collection("messages").orderBy("timestamp", "desc").limit(100);
+    var query = firebase
+        .firestore()
+        .collection("messages")
+        .doc(room)
+        .collection("messages")
+        .orderBy("timestamp", "desc")
+        .limit(100);
 
     // Start listening to the query.
     query.onSnapshot(function(snapshot) {
