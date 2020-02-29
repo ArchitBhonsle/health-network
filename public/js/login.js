@@ -23,6 +23,11 @@ document.getElementById("google-login").addEventListener("click", function() {
             let credential = error.credential;
             // ...
         });
+        // firebase.auth.Auth.Persistence.LOCAL
+   /* firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .catch(function(error) {
+            console.log(error.message);
+        });*/
 });
 
 document.getElementById("email-login").addEventListener("click", function() {
