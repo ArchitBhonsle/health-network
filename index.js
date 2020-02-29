@@ -25,6 +25,10 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
+app.get("/signup", (req, res) => {
+    res.render("signup");
+});
+
 app.listen(9001, () => {
     console.log("Server started at port 9001");
 });
