@@ -1,8 +1,8 @@
 "use strict";
 
 const room = window.location.pathname.toLowerCase().slice(7);
-document.title = room;
-document.getElementById("banner").innerHTML = room.toUpperCase();
+document.title = room.replace("%20", " ");
+document.getElementById("banner").innerHTML = room.toUpperCase().replace("%20", " ");
 
 // Signs-in Friendly Chat.
 function signIn() {
