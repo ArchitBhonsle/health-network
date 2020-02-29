@@ -1,0 +1,10 @@
+.details {
+    border-radius: 1em;
+    padding: 1rem 3rem;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.details > h1 {
+    text-align: center;
+    margin: 2rem;
+}
