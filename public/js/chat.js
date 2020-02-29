@@ -1,6 +1,8 @@
 "use strict";
 
 const room = window.location.pathname.toLowerCase().slice(7);
+document.title = room;
+document.getElementById("banner").innerHTML = room.toUpperCase();
 
 // Signs-in Friendly Chat.
 function signIn() {
@@ -48,6 +50,26 @@ function saveMessage(messageText) {
             name          : getUserName(),
             text          : messageText,
             profilePicUrl : getProfilePicUrl(),
+            timestamp     : firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .catch(function(error) {
+            console.error("Error writing new message to Firebase Database", error);
+        });
+}
+
+// Saves a new message on the Cloud Firestore.
+function saveAnonMessage(messageText) {
+    // Add a new message entry to the Firebase database.
+    console.log("Anon triggred");
+    return firebase
+        .firestore()
+        .collection("messages")
+        .doc(room)
+        .collection("messages")
+        .add({
+            name          : "Anonymous",
+            text          : messageText,
+            profilePicUrl : null,
             timestamp     : firebase.firestore.FieldValue.serverTimestamp()
         })
         .catch(function(error) {
@@ -189,6 +211,17 @@ function onMessageFormSubmit(e) {
             // Clear message text field and re-enable the SEND button.
             resetMaterialTextfield(messageInputElement);
             toggleButton();
+        });
+    }
+}
+
+function onMessageFormAnonSubmit(e) {
+    e.preventDefault();
+    // Check that the user entered a message and is signed in.
+    if (messageInputElement.value && checkSignedInWithMessage()) {
+        saveAnonMessage(messageInputElement.value).then(function() {
+            // Clear message text field and re-enable the SEND button.
+            resetMaterialTextfield(messageInputElement);
         });
     }
 }
@@ -360,6 +393,14 @@ function toggleButton() {
     }
 }
 
+function toggleAnonButton() {
+    if (messageInputElement.value) {
+        submitAnon.removeAttribute("disabled");
+    } else {
+        submiAnon.setAttribute("disabled", "true");
+    }
+}
+
 // Checks that the Firebase SDK has been correctly setup and configured.
 function checkSetup() {
     if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
@@ -379,8 +420,7 @@ var messageListElement = document.getElementById("messages");
 var messageFormElement = document.getElementById("message-form");
 var messageInputElement = document.getElementById("message");
 var submitButtonElement = document.getElementById("submit");
-var imageButtonElement = document.getElementById("submitAnonymous");
-var imageFormElement = document.getElementById("image-form");
+var submitAnon = document.getElementById("submitAnon");
 // var mediaCaptureElement = document.getElementById("mediaCapture");
 var userPicElement = document.getElementById("user-pic");
 var userNameElement = document.getElementById("user-name");
@@ -396,7 +436,14 @@ signInButtonElement.addEventListener("click", signIn);
 // Toggle for the button.
 messageInputElement.addEventListener("keyup", toggleButton);
 messageInputElement.addEventListener("change", toggleButton);
+messageInputElement.addEventListener("keyup", toggleAnonButton);
+messageInputElement.addEventListener("change", toggleAnonButton);
 
+userPicElement.addEventListener("click", function() {
+    window.location.replace("/profile");
+});
+
+submitAnon.addEventListener("click", onMessageFormAnonSubmit);
 // Events for image upload.
 // imageButtonElement.addEventListener("click", function(e) {
 //     e.preventDefault();
