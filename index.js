@@ -45,9 +45,8 @@ app.get("/profile", (req, res) => {
 });
 
 app.get("/chats/:id", (req, res) => {
-    // res.send(req.params.id);
     res.render("chat");
-})
+});
 
 app.listen(9001, () => {
     console.log("Server started at port 9001");
