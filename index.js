@@ -18,6 +18,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
+let fs = firebase.storage();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -30,6 +31,10 @@ app.get("/login", (req, res) => {
 
 app.get("/details", (req, res) => {
     res.render("auth/details");
+});
+
+app.get("/addCondition", (req, res) => {
+    res.render("addCondition");
 });
 
 app.get("/chat", (req, res) => {

@@ -1,32 +1,14 @@
-<%- include("../partials/top.ejs") %>
+<%- include("./partials/top.ejs") %>
 
-        <link rel="stylesheet" type="text/css" href="/css/details.css">
-        <title>Details</title>
+        <link rel="stylesheet" type="text/css" href="/css/addCondition.css">
+        <title>Profile</title>
     </head>
     <body>
-        <%- include("../partials/firebase.ejs") %>
-        <script>import "firebase/storage";</script>
+        <%- include("./partials/firebase.ejs") %>
+
         <div class="container">
             <div class="details">
-                <h1>Details</h1>
-                
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of birth</label>
-                        <input type="date" class="form-control" name="dob" id="dob">
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select class="form-control" id="gender">
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                            <option>Prefer not to say</option>
-                        </select>
-                    </div>
+                <h1>Add Condition</h1>
                     <div class="form-group">
                         <label for="condition">Condition</label>
                         <input type="text" class="form-control" id="condition" placeholder="Your Condition">
@@ -51,7 +33,5 @@
                 </form>
             </div>
         </div>
-
-        <script src="/js/details.js"></script>
-
-<%- include("../partials/bottom.ejs") %>
+<script src="/js/addCondition.js"></script>
+<%- include("./partials/bottom.ejs") %>
