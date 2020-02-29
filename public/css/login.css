@@ -11,8 +11,8 @@
     margin: 10px;
 }
 
-.login > h1 {
-    text-align: center;
+i {
+    margin: 5px 10px 5px 5px;
 }
 
 .login > form > div > input {
