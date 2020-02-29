@@ -6,7 +6,6 @@ firebase.auth().onAuthStateChanged(function(currentUser) {
     usersDocRef = usersCol.doc(currentUser.uid);
     usersDocRef.get().then(function(userDoc) {
         user = userDoc.data();
-        console.log(user);
         cond = user.condition;
         docs = user.doctor;
         meds = user.medications;
