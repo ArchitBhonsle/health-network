@@ -1,4 +1,4 @@
-const firebase = require("firebase");
+const firebase = require("firebase-admin");
 
 const firebaseConfig = {
     apiKey            : "AIzaSyAs8FVXBJ-M4toU6-GNQKDuAsodbkP501w",
