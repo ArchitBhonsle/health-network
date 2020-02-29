@@ -39,22 +39,9 @@ app.get("/details", (req, res) => {
     res.render("auth/details");
 });
 
-/*app.post("/details", (req, res) => {
-
-    let data = {
-        // name : req.body.name,
-        dob : req.body.dob,
-        gender : req.body.gender,
-        condition : req.body.condition,
-        timeSinceDiagnosis : req.body.timeSinceDiagnosis,
-        doctor: req.body.doctor,
-        medications : req.body.medications
-    };
-    var user = firebase.auth().currentUser;
-    // user = firebase.auth().currentUser.uid;
-    // user = firebase.auth().currentUser.uid;
-    let setData = db.collection("user").doc(user.uid).set(data);
-})*/
+app.get("/chat", (req, res) => {
+    res.render("chat");
+});
 
 app.listen(9001, () => {
     console.log("Server started at port 9001");
