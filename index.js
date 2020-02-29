@@ -33,6 +33,10 @@ app.get("/details", (req, res) => {
     res.render("auth/details");
 });
 
+app.get("/chat", (req, res) => {
+    res.render("chat");
+});
+
 app.listen(9001, () => {
     console.log("Server started at port 9001");
 });
