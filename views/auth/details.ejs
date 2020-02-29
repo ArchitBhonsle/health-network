@@ -1,11 +1,57 @@
-<%- include("./partials/top.ejs") %>
+<%- include("../partials/top.ejs") %>
 
         <link rel="stylesheet" type="text/css" href="/css/details.css">
-        <title>Login</title>
+        <title>Details</title>
     </head>
     <body>
         <%- include("../partials/firebase.ejs") %>
 
+        <div class="container">
+            <div class="details">
+                <h1>Details</h1>
+                <form action="/details/" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of birth</label>
+                        <input type="date" class="form-control" name="dob" id="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="condition">Condition</label>
+                        <input type="text" class="form-control" id="condition" placeholder="Your Condition">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeSinceDiagnosis">Time Since Diagnosis</label>
+                        <input type="text" class="form-control" id="timeSinceDiagnosis" placeholder="Months since the condition was diagnosed">
+                    </div>
+                    <div class="form-group">
+                        <label for="doctor">Doctor</label>
+                        <input type="text" class="form-control" id="doctor" placeholder="Name of the Doctor you're visiting">
+                    </div>
+                    <div class="form-group">
+                        <label for="medications">Medications</label>
+                        <input type="text" class="form-control" id="medications" placeholder="The Medications you're are consuming">
+                    </div>
+                    <div class="form-group">
+                        <label for="medReport">Medical Report Image</label>
+                        <input type="file" class="form-control-file" id="medReport">
+                    </div>
+                    <button class="btn btn-lg btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
         <script src="/js/details.js"></script>
 
-<%- include("./partials/bottom.ejs") %>
+<%- include("../partials/bottom.ejs") %>
