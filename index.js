@@ -32,6 +32,10 @@ app.get("/details", (req, res) => {
     res.render("auth/details");
 });
 
+app.get("/addCondition", (req, res) => {
+    res.render("addCondition");
+});
+
 app.get("/chat", (req, res) => {
     res.render("chat");
 });
