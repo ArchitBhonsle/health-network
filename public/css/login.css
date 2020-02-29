@@ -1,0 +1,10 @@
+.login {
+    border: 1px solid black;
+    border-radius: 1em;
+    margin: 5rem;
+    text-align: center;
+}
+
+.login-button {
+    margin: 10px;
+}

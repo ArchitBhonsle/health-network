@@ -1,19 +1,48 @@
-<%- include("./partials/top.ejs") %>
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <title>Social Network</title>
+    </head>
+    <body>
+            <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+
+            <!-- Add the entire Firebase JavaScript SDK -->
+            <script src="/__/firebase/7.9.2/firebase.js"></script>
+            <script>
+                const firebaseConfig = {
+                    apiKey            : "AIzaSyAs8FVXBJ-M4toU6-GNQKDuAsodbkP501w",
+                    authDomain        : "social-network-c462e.firebaseapp.com",
+                    databaseURL       : "https://social-network-c462e.firebaseio.com",
+                    projectId         : "social-network-c462e",
+                    storageBucket     : "social-network-c462e.appspot.com",
+                    messagingSenderId : "132403966735",
+                    appId             : "1:132403966735:web:a5104971fbbb768ce7847a",
+                    measurementId     : "G-FD1QD59BLT"
+                };
+
+                firebase.initializeApp(firebaseConfig);
+            </script>
+
 <div class="container">
-    <div class="login mx-auto mt-auto">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-success"><i class="fab fa-google"></i></button>
-            </div>
-            <div class="col">
-                <button type="button" class="btn btn-primary"><i class="fab fa-facebook"></i></button>
-            </div>
-            <div class="col">
-                <button type="button" class="btn btn-secondary"><i class="fas fa-envelope-open-text"></i></button>
-            </div>
+    <div class="login">
+        <div class="login-button">
+           <button id="google-login" type="button" class="btn btn-success"><i class="fab fa-google"></i> Login with Google</button>
+        </div>
+        <div class="login-button">
+            <button id="facebook-login" type="button" class="btn btn-primary"><i class="fab fa-facebook"></i> Login with Facebook</button>
+        </div>
+        <div class="login-button">
+            <button id="email-login" type="button" class="btn btn-secondary"><i class="fas fa-envelope"></i> Login with Email</button>
         </div>
     </div>
 </div>
 
-
+<script src="../public/js/login.js"></script>
 <%- include("./partials/bottom.ejs") %>
