@@ -48,6 +48,10 @@ app.get("/chats/:id", (req, res) => {
     res.render("chat");
 });
 
+app.get("/doctor", (req, res) => {
+    res.render("doctor");
+});
+
 app.listen(9001, () => {
     console.log("Server started at port 9001");
 });

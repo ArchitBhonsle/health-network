@@ -1,0 +1,21 @@
+<%- include("./partials/top.ejs") %>
+
+        <link rel="stylesheet" type="text/css" href="/css/profile.css">
+        <title>Doctor</title>
+    </head>
+    <body>
+        <%- include("./partials/firebase.ejs") %>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4" id="name">Hello Doctor!</h1>
+                <hr class="my-4">
+                <p class="lead">The doctor panel has request to all the chats and their comments are highlighted</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" id="chatArray"></div>
+        </div>
+        
+        <script src="/js/doctor.js"></script>
+
+<%- include("./partials/bottom.ejs") %>
