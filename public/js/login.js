@@ -38,6 +38,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             }
         })
         .catch(function(error) {
+            console.log(error.message);
             window.location.replace("/details");
-        })
+        });
 });
