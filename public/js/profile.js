@@ -16,7 +16,6 @@ firebase.auth().onAuthStateChanged(function(currentUser) {
     });
 });
 
-
 function generateCard(i, condition, time, doctor, medication) {
     return `<div class="col-sm-4">
     <div class="card">
@@ -48,4 +47,9 @@ function gotoChat(i) {
 
 document.getElementById("addCondition").addEventListener("click", function() {
     window.location.replace("/addCondition");
+});
+
+document.getElementById("logout").addEventListener("click", function() {
+	firebase.auth().signOut();
+	window.location.replace("/login");
 });

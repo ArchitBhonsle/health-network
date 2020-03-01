@@ -21,7 +21,6 @@ document.getElementById("google-login").addEventListener("click", function() {
             let credential = error.credential;
             // ...
         });
-
 });
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -37,7 +36,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             } else {
                 window.location.replace("/details");
             }
-        });
-
-    
+        })
+        .catch(function(error) {
+            window.location.replace("/details");
+        })
 });
