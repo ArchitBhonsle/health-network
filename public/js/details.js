@@ -2,6 +2,11 @@ let db = firebase.firestore();
 
 document.getElementById("submit-details").addEventListener("click", function() {
     let user = firebase.auth().currentUser;
+
+    if(document.getElementById("doctor").value === null || document.getElementById("doctor").value === "") {
+        window.location.replace("/profile");
+        return;
+    }
     let setData = db
         .collection("user")
         .doc(user.uid)
