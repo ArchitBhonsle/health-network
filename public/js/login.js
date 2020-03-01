@@ -29,16 +29,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     db.collection("user")
         .doc(user.uid)
-        .onSnapshot(function(querySnapshot) {      
+        .onSnapshot(function(querySnapshot) {     
+            try { 
             let arr = querySnapshot.data().condition;
-            if(arr.length !== 0) {
-                window.location.replace("/profile");
-            } else {
+            } catch(err) {
                 window.location.replace("/details");
             }
-        })
-        .catch(function(error) {
-            console.log(error.message);
-            window.location.replace("/details");
+            if(arr.length !== 0) {
+                window.location.replace("/profile");
+            }
         });
 });
