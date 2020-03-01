@@ -31,7 +31,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         .doc(user.uid)
         .onSnapshot(function(querySnapshot) {     
             try { 
-            let arr = querySnapshot.data().condition;
+                let arr = querySnapshot.data().condition;
+                if(arr.length !== 0) {
+                    window.location.replace("/profile");
+                }
             } catch(err) {
                 window.location.replace("/details");
             }
