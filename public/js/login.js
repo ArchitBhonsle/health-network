@@ -34,6 +34,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 let arr = querySnapshot.data().condition;
                 if(arr.length !== 0) {
                     window.location.replace("/profile");
+                } else {
+                    window.location.replace("/details");
                 }
             } catch(err) {
                 window.location.replace("/details");
