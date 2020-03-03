@@ -23,6 +23,21 @@ document.getElementById("google-login").addEventListener("click", function() {
         });
 });
 
+document.getElementById("email-login").addEventListener("click", function() {
+    
+    firebase
+            .auth()
+            .signInWithEmailAndPassword(document.getElementById("email-input").value, document.getElementById("pass-word").value)
+            .then(function() {
+                window.location.replace("/doctor");
+            })
+            .catch(function(error) {
+                console.log(error.message);
+            });
+            window.location.replace("/doctor");
+        });
+
+
 firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
     document.getElementById("google-login").innerHTML = `Logged in as ${user.displayName}`;
@@ -31,7 +46,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         .doc(user.uid)
         .onSnapshot(function(querySnapshot) {     
             try { 
-                let arr = querySnapshot.data().condition;
+                let arr = querySnapshot.data().doctor;
                 if(arr.length !== 0) {
                     window.location.replace("/profile");
                 } else {
